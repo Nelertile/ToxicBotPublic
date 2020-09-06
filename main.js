@@ -1,3 +1,5 @@
+const keepAlive = require('./server')
+require("dotenv").config()
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
@@ -43,8 +45,13 @@ client.on('message', message =>{
         client.commands.get('help').execute(message, args); 
     }  else if (command == '!b'){
         client.commands.get('!b').execute(message, args); 
-    } 
+    } else if (command == 'beatso'){
+        client.commands.get('botso').execute(message, args); 
+    } else if (command == 'extractor'){
+        client.commands.get('veext').execute(message, args); 
+    }
 });
 
-client.login('');
+keepAlive()
+client.login(process.env.token);
 //// all code in this bot was written by @NotToxic
